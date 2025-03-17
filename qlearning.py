@@ -112,7 +112,7 @@ class Config:
         self.b: float = -0.14637663947236  # Risky asset return in unfavorable state
         self.alpha: float = 0.01                  # Learning rate
         self.num_actions: int = 20                # Number of actions discretized from continuous action space
-        self.num_wealth: int = 30                 # Number of wealth levels
+        self.num_wealth: int = 500                 # Number of wealth levels
         self.initial_wealth: float = 1            # Initial wealth level
         higher_return: float = max(self.a, self.r)  # Higher return between a and r
         self.max_wealth: float = self.initial_wealth * ((1+higher_return)**10)  # Maximum possible wealth
@@ -455,8 +455,8 @@ class QAgent:
             self.config.alpha *= 0.999999
 
             # Periodically display the current greedy policy
-            if j % 10000 == 0:
-                self.show_policy()
+            # if j % 10000 == 0:
+            #     self.show_policy()
 
             # Store post-update Q-values and calculate total change
             qafter = self.qtable.q.copy()
@@ -468,18 +468,11 @@ class QAgent:
     def show_policy(self):
         """
         Display sample allocation policies from the current Q-function.
-        
-        This method generates multiple greedy episodes using the current
-        Q-values and prints the sequence of allocation choices (actions)
-        taken by the agent at different time steps. This provides a quick
-        visual inspection of how the learned policy is evolving during training.
-        
-        The method runs 5 independent episodes to account for stochasticity
-        in the environment and shows the allocation patterns for each.
         """
-        for i in range(5):
-            episode = self._get_episode_from_mdp(greedy=True)
-            print(episode["actions"])
+        pass
+        # for i in range(5):
+        #     episode = self._get_episode_from_mdp(greedy=True)
+        #     print(episode["actions"])
 
     def plot_results(self):
         """

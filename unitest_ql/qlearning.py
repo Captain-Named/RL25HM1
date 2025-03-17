@@ -106,18 +106,18 @@ class Config:
         """
         self.utility_a: float = 1                 # Risk aversion parameter
         self.T: int = 10                          # End time horizon
-        self.p: float = 0.55                      # Probability of higher return 'a'
-        self.r: float = 0.05                      # Risk-free rate
-        self.a: float = 0.12                      # Risky asset return (high outcome)
-        self.b: float = 0.02                      # Risky asset return (low outcome)
+        self.p: float = 0.749519253521917  # Probability of high return for risky asset
+        self.r: float = 0.281093058305667  # Risk-free interest rate (annual)
+        self.a: float = 0.479550138167822  # Risky asset return in favorable state
+        self.b: float = -0.14637663947236  # Risky asset return in unfavorable state
         self.alpha: float = 0.01                  # Learning rate
         self.num_actions: int = 20                # Number of actions discretized from continuous action space
-        self.num_wealth: int = 30                 # Number of wealth levels
+        self.num_wealth: int = 500                 # Number of wealth levels
         self.initial_wealth: float = 1            # Initial wealth level
         higher_return: float = max(self.a, self.r)  # Higher return between a and r
         self.max_wealth: float = self.initial_wealth * ((1+higher_return)**10)  # Maximum possible wealth
         self.epsilon: float = 0.4                 # Exploration rate for epsilon-greedy policy
-        self.num_episodes: int = 500000           # Number of episodes for training
+        self.num_episodes: int = 100000           # Number of episodes for training
         
         # Exponential utility function capturing risk aversion
         # Negative exponential utility function: -exp(-a*x)/a
