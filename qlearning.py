@@ -117,7 +117,7 @@ class Config:
         higher_return: float = max(self.a, self.r)  # Higher return between a and r
         self.max_wealth: float = self.initial_wealth * ((1+higher_return)**10)  # Maximum possible wealth
         self.epsilon: float = 0.4                 # Exploration rate for epsilon-greedy policy
-        self.num_episodes: int = 500000           # Number of episodes for training
+        self.num_episodes: int = 20000           # Number of episodes for training
         
         # Exponential utility function capturing risk aversion
         # Negative exponential utility function: -exp(-a*x)/a
