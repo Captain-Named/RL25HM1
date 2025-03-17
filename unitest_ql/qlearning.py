@@ -106,10 +106,10 @@ class Config:
         """
         self.utility_a: float = 1                 # Risk aversion parameter
         self.T: int = 10                          # End time horizon
-        self.p: float = 0.749519253521917  # Probability of high return for risky asset
-        self.r: float = 0.281093058305667  # Risk-free interest rate (annual)
-        self.a: float = 0.479550138167822  # Risky asset return in favorable state
-        self.b: float = -0.14637663947236  # Risky asset return in unfavorable state
+        self.p: float = 0.55                      # Probability of higher return 'a'
+        self.r: float = 0.05                      # Risk-free rate
+        self.a: float = 0.12                      # Risky asset return (high outcome)
+        self.b: float = 0.02                      # Risky asset return (low outcome)
         self.alpha: float = 0.01                  # Learning rate
         self.num_actions: int = 20                # Number of actions discretized from continuous action space
         self.num_wealth: int = 30                 # Number of wealth levels
@@ -468,18 +468,11 @@ class QAgent:
     def show_policy(self):
         """
         Display sample allocation policies from the current Q-function.
-        
-        This method generates multiple greedy episodes using the current
-        Q-values and prints the sequence of allocation choices (actions)
-        taken by the agent at different time steps. This provides a quick
-        visual inspection of how the learned policy is evolving during training.
-        
-        The method runs 5 independent episodes to account for stochasticity
-        in the environment and shows the allocation patterns for each.
         """
-        for i in range(5):
-            episode = self._get_episode_from_mdp(greedy=True)
-            print(episode["actions"])
+        pass
+        # for i in range(5):
+        #     episode = self._get_episode_from_mdp(greedy=True)
+        #     print(episode["actions"])
 
     def plot_results(self):
         """
